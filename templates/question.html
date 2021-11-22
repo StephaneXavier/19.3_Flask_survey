@@ -1,19 +1,19 @@
 {% extends 'base.html'%}
-{% block title %} {{number}} {% endblock %}
+{% block title %} {{question_id +1}} {% endblock %}
 
 {% block content %}
 {% for msg in get_flashed_messages() %}
 <p>{{msg}}</p>
 {% endfor %}
 
-<h1>question number: {{number}}</h1>
+<h1>question number: {{question_id +1}} / {{survey_questions_length}}</h1>
 
 <h2>{{survey_question}}</h2>
 
 <form action="/answer" method="POST">
     {% for answer in survey_answers %}
     <label for="">{{answer}}</label>
-    <input type="radio" name="question-{{number}}" value="{{answer}}">
+    <input type="radio" name="question-{{question_id}}" value="{{answer}}">
     {% endfor %}
     <button>submit</button>
 </form>

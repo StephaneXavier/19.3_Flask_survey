@@ -2,11 +2,15 @@
 {% block title %} home page {% endblock %}
 
 {%block content%}
+{% for msg in get_flashed_messages()%}
+<p>{{msg}}</p>
+{% endfor %}
 <h1>{{ survey_title}}</h1>
 
 <h2>{{survey_instructions}}</h2>
-<!-- <form action="questions/0">
-    <button>Start the survey!</button>
-</form> -->
-<button onclick="location.href = 'question/0'" type='button'>Start survey!</button>
+
+<form action="/new-survey" method="POST">
+    <input type="submit" value="start">
+</form>
+
 {% endblock%}
